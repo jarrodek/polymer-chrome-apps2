@@ -1,0 +1,34 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+<link rel="import" href="../roboto/roboto.html">
+<dom-module id="app-log-item">
+  <template>
+    <style>
+    :host{
+      padding: 24px 16px;
+    }
+    .item{
+
+    }
+    .timestamp,
+    .message{
+      color: rgba(0,0,0,0.87);
+      font-size: 13px;
+    }
+    .error .timestamp,
+    .error .message{
+      color: rgba(255,0,0,0.87);
+    }
+    .timestamp{
+      margin-right: 8px;
+      width: 190px;
+    }
+    .message{
+
+    }
+    </style>
+    <div layout horizontal class="item {{ {error: error} | tokenList}}">
+      <span class="timestamp" hidden?="{{!timestamp}}">[{{timestamp}}]:</span><span class="message">{{message}}</span>
+    </div>
+  </template>
+  <script src="app-log-item.js"></script>
+</dom-module>

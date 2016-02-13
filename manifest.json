@@ -1,0 +1,24 @@
+{
+  "manifest_version": 2,
+  "name": "Polymer Chrome Apps APIs",
+  "description": "A set of Chrome Apps API's elements for Polymer (webcomponents).",
+  "version": "0.0.1",
+  "minimum_chrome_version": "39",
+  "permissions": [
+    "<all_urls>",
+    "identity",
+    "storage",
+    "unlimitedStorage",
+    "syncFileSystem",
+    "clipboardWrite",
+    "idle",
+    "alarms",
+    {"fileSystem": ["write"]}
+  ],
+  "bluetooth": { },
+  "app": {
+    "background": {
+      "scripts": ["demo-app/js/background.js"]
+    }
+  }
+}

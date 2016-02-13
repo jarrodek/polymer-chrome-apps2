@@ -1,0 +1,25 @@
+{
+  "name": "Polymer Chrome Apps APIs",
+  "description": "A set of Chrome Apps API's elements for Polymer (webcomponents).",
+  "homepage": "https://github.com/jarrodek/polymer-chrome-apps",
+  "keywords": [
+    "webcomponents", "polymer", "chrome-apps", "chrome"
+  ],
+  "author": "Pawel Psztyc",
+  "private": false,
+  "dependencies": {
+    "iron-elements": "PolymerElements/iron-elements#latest",
+    "paper-elements": "PolymerElements/paper-elements#latest",
+    "neon-elements": "PolymerElements/neon-elements#latest",
+    "paper-dialog-fullscreen": "bendavis78/paper-dialog-fullscreen",
+    "chrome-alarms": "jarrodek/chrome-alarms",
+    "chrome-bluetooth": "jarrodek/chrome-bluetooth",
+    "chrome-app-filesystem": "jarrodek/chrome-app-filesystem",
+    "chrome-idle": "jarrodek/chrome-idle",
+    "chrome-window": "jarrodek/chrome-window"
+  },
+  "ignore": [
+    "externs/**",
+    ".gitignore"
+  ]
+}

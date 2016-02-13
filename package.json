@@ -1,0 +1,6 @@
+{
+	"devDependencies": {
+		"gulp": "^3.8.5",
+		"gulp-crisper": "^1.0.0"
+	}
+}

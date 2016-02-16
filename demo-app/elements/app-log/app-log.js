@@ -1,8 +1,9 @@
 Polymer({
   is: 'app-log',
   append: function(message, error){
-    if(!error) error = false;
-
+    if(typeof error === 'undefined') {
+      error = false;
+    }
     var item = document.createElement('app-log-item');
     item.message = message;
     var d = new Date();

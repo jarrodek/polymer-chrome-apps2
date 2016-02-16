@@ -1,10 +1,9 @@
-<link rel="import" href="/bower_components/polymer/polymer.html">
-
-<link rel="import" href="/bower_components/core-item/core-item.html">
-<link rel="import" href="/bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../../bower_components/chrome-bluetooth/chrome-bluetooth.html">
 
 <link rel="import" href="../roboto/roboto.html">
-<link rel="import" href="/bower_components/chrome-bluetooth/chrome-bluetooth.html">
 <link rel="import" href="../app-log/app-log.html">
 
 <dom-module id="bluetooth-demo">
@@ -50,41 +49,50 @@
         margin-right: 8px;
       }
 
-      .adapter-info core-item span:nth-child(2) {
+      .adapter-info paper-item span:nth-child(2) {
         padding-left: 8px;
       }
-    </style>
-    <div layout vertical>
-      <h1>chrome-app-bluetooth</h1>
 
+      .panel-settings {
+        @apply(--layout-vertical);
+        @apply(--layout-center);
+      }
+
+      .panel-settings-section {
+        @apply(--layout-vertical);
+        @apply(--layout-center);
+      }
+    </style>
+    <div class="panel-settings">
+      <h1>chrome-app-bluetooth</h1>
       <!-- Adapter state -->
       <section>
-        <div layout horizontal>
+        <div class="panel-settings-section">
           <h2 flex>Adapter info</h2>
           <paper-button on-tap="{{queryAdapterState}}">Refresh</paper-button>
         </div>
 
-        <div layout vertical class="adapter-info">
-          <core-item layout horizontal>
+        <div class="adapter-info panel-settings-section">
+          <paper-item layout horizontal>
             <span class="label">Device name:</span>
             <span>{{deviceName}}</span>
-          </core-item>
-          <core-item layout horizontal>
+          </paper-item>
+          <paper-item layout horizontal>
             <span class="label">Address:</span>
             <span>{{deviceAddress}}</span>
-          </core-item>
-          <core-item layout horizontal>
+          </paper-item>
+          <paper-item layout horizontal>
             <span class="label">Available:</span>
-            <span error?="{{!adapterAvailable}}" layout horizontal flex center self-stretch>{{adapterAvailable}}</span>
-          </core-item>
-          <core-item layout horizontal>
+            <span error$="{{!adapterAvailable}}" layout horizontal flex center self-stretch>{{adapterAvailable}}</span>
+          </paper-item>
+          <paper-item layout horizontal>
             <span class="label">Discovering:</span>
-            <span success?="{{adapterDiscovering}}" layout horizontal flex center self-stretch>{{adapterDiscovering}}</span>
-          </core-item>
-          <core-item layout horizontal>
+            <span success$="{{adapterDiscovering}}" layout horizontal flex center self-stretch>{{adapterDiscovering}}</span>
+          </paper-item>
+          <paper-item layout horizontal>
             <span class="label">Powered:</span>
-            <span warning?="{{!adapterPowered}}" layout horizontal flex center self-stretch>{{adapterPowered}}</span>
-          </core-item>
+            <span warning$="{{!adapterPowered}}" layout horizontal flex center self-stretch>{{adapterPowered}}</span>
+          </paper-item>
         </div>
       </section>
 
@@ -92,33 +100,27 @@
       <section>
         <div layout horizontal>
           <h2 flex>Devices</h2>
-          <paper-button hidden?="{{adapterDiscovering || !adapterAvailable}}" on-tap="{{startDiscovery}}">Start discovery</paper-button>
-          <paper-button hidden?="{{!adapterDiscovering || !adapterAvailable}}" on-tap="{{stopDiscovery}}">Stop discovery</paper-button>
+          <paper-button hidden?="{{adapterDiscovering || !adapterAvailable}}" on-tap="startDiscovery">Start discovery</paper-button>
+          <paper-button hidden?="{{!adapterDiscovering || !adapterAvailable}}" on-tap="stopDiscovery">Stop discovery</paper-button>
         </div>
-
         <div>
-          <template repeat="{{device in currentDevices}}">
+          <template is="dom-repeat" repeat="{{currentDevices}}">
             <div class="device-item">
-              <p class="device-name">{{device.name}}</p>
+              <p class="device-name">{{item.name}}</p>
               <p class="device-status">
-                <span>Paired: {{device.paired}}</span>
-                <span>Connected: {{device.connected}}</span>
+                <span>Paired: {{item.paired}}</span>
+                <span>Connected: {{item.connected}}</span>
               </p>
             </div>
-
           </template>
         </div>
-
-
       </section>
-
-
       <!-- log section. -->
       <section>
         <app-log id="log"></app-log>
       </section>
 
-      <chrome-bluetooth id="bluetooth" on-device-added="{{onDeviceAdded}}" on-device-changed="{{onDeviceChanged}}" on-device-removed="{{onDeviceRemoved}}" on-state-changed="{{onAdapterStateChanged}}" on-error="{{onError}}" on-device="{{onDevice}}" on-discovery="{{onDiscoveryStateChanged}}"></chrome-bluetooth>
+      <chrome-bluetooth id="bluetooth" on-device-added="onDeviceAdded" on-device-changed="onDeviceChanged" on-device-removed="onDeviceRemoved" on-state-changed="onAdapterStateChanged" on-error="onError" on-device="onDevice" on-discovery="onDiscoveryStateChanged"></chrome-bluetooth>
 
     </div>
   </template>

@@ -34,16 +34,16 @@ Polymer({
       observer: 'windowminimizedChanged'
     }
   },
-  onCreated: function (event, details, sender) {
+  onCreated: function (event, details) {
     console.log('Window created', details);
     this.isOpened = true;
     this.$.log.append('Window "' + this.windowid + '" has been created.');
   },
-  onError: function (event, details, sender) {
+  onError: function (event, details) {
     console.error('Error from window API', details);
     this.$.log.append('An error occurred: ' + JSON.stringify(), true);
   },
-  openWindow: function (event, details, sender) {
+  openWindow: function (event, details) {
     console.log('open window');
     this.$.window.create();
   },

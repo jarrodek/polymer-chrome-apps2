@@ -37,7 +37,6 @@ Polymer({
 
   _setAdapterInfo: function(adapterInfo){
     this.$.log.append('New adapter info available: ' + JSON.stringify(adapterInfo));
-
     this.deviceName = adapterInfo.name || 'unknown';
     this.deviceAddress = adapterInfo.address || 'unknown';
     this.adapterAvailable = adapterInfo.available;
@@ -45,22 +44,22 @@ Polymer({
     this.adapterPowered = adapterInfo.powered;
   },
 
-  onAdapterStateChanged: function(e, details, sender){
+  onAdapterStateChanged: function(e, details){
     console.log('onAdapterStateChanged', details);
     this._setAdapterInfo(details);
     this.$.log.append('Adapther state changed: ' + JSON.stringify(details));
   },
 
-  onError: function(e, details, sender){
+  onError: function(e, details){
     console.error('onError', details);
   },
 
-  onDeviceAdded: function(e, details, sender){
+  onDeviceAdded: function(e, details){
     console.log('onDeviceAdded', details);
     this.currentDevices.push(details);
   },
 
-  onDeviceChanged: function(e, details, sender){
+  onDeviceChanged: function(e, details){
     console.log('onDeviceChanged', details);
     this.$.log.append('Bluetooth device changed: ' + JSON.stringify(details));
     for(var i=0,len=this.currentDevices.length; i<len; i++){
@@ -71,10 +70,10 @@ Polymer({
       }
     }
     //add as new device
-    this.onDeviceAdded(e, details, sender);
+    this.onDeviceAdded(e, details);
   },
 
-  onDeviceRemoved: function(e, details, sender){
+  onDeviceRemoved: function(e, details){
     console.log('onDeviceRemoved', details);
     this.$.log.append('Bluetooth device removed: ' + JSON.stringify(details));
     this.currentDevices = this.currentDevices.filter(function(item){
@@ -85,7 +84,7 @@ Polymer({
     });
   },
 
-  onDiscoveryStateChanged: function(e, details, sender){
+  onDiscoveryStateChanged: function(e, details){
     console.log('onDiscoveryStateChanged', details);
     if(details.mode === 'ended'){
       this.$.log.append('Adapter is no loger searching for new devices');
@@ -94,7 +93,7 @@ Polymer({
     }
   },
 
-  onDevice: function(e, details, sender){
+  onDevice: function(e, details){
     console.log('onDevice', details);
   },
 

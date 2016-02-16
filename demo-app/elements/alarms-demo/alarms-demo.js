@@ -17,7 +17,7 @@ Polymer({
   ready: function () {
     this.$.alarms.getAll();
   },
-  onAlarmInfo: function (event, details, sender) {
+  onAlarmInfo: function (event, details) {
     var alarms = details.alarms;
     if (alarms.length > 0 && !(alarms.length === 1 && !alarms[0])) {
       for (var i = 0, len = alarms.length; i < len; i++) {
@@ -40,7 +40,7 @@ Polymer({
   clearAlarm: function () {
     this.$.alarms.clear();
   },
-  onAlarm: function (event, details, sender) {
+  onAlarm: function (event, details) {
     var alarm = details.alarm;
     if (!alarm)
       return;

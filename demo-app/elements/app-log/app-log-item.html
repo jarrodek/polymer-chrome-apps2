@@ -1,4 +1,4 @@
-<link rel="import" href="/bower_components/polymer/polymer.html">
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
 <link rel="import" href="../roboto/roboto.html">
 <dom-module id="app-log-item">
   <template>
@@ -6,9 +6,7 @@
     :host{
       padding: 24px 16px;
     }
-    .item{
-
-    }
+    .item {}
     .timestamp,
     .message{
       color: rgba(0,0,0,0.87);
@@ -26,8 +24,8 @@
 
     }
     </style>
-    <div layout horizontal class="item {{ {error: error} | tokenList}}">
-      <span class="timestamp" hidden?="{{!timestamp}}">[{{timestamp}}]:</span><span class="message">{{message}}</span>
+    <div layout horizontal class$="{{_computeItemClassName(error)}}">
+      <span class="timestamp" hidden$="{{!timestamp}}">[<span>{{timestamp}}</span>]:</span><span class="message">{{message}}</span>
     </div>
   </template>
   <script src="app-log-item.js"></script>

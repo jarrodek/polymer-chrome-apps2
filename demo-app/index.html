@@ -1,15 +1,42 @@
 <!DOCTYPE html>
-
 <html>
+
 <head>
   <title>Polymer Chrome Apps APIs</title>
   <base href="/demo-app/">
+  <link rel="stylesheet" href="styles/main.css">
   <script src="../bower_components/webcomponentsjs/webcomponents.js"></script>
-  <link rel="import" href="elements/chrome-app/chrome-app.html">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="import" href="elements/elements.html">
 </head>
 
-<body fullbleed vertical layout unresolved>
-  <chrome-app vertical layout unresolved></chrome-app>
+<body unresolved>
+  <template is="dom-bind" id="app">
+    <paper-drawer-panel id="paperDrawerPanel" flex>
+      <paper-scroll-header-panel drawer>
+        <paper-toolbar>
+          <div class="title">Demos</div>
+        </paper-toolbar>
+        <paper-menu selected="[[route]]" attr-for-selected="data-route" on-tap="_menuTap">
+          <paper-item data-route="bluetooth" data-place$="{{baseUrl}}/bluetooth">Bluetooth</paper-item>
+        </paper-menu>
+      </paper-scroll-header-panel>
+      <paper-scroll-header-panel main id="headerPanelMain">
+        <paper-toolbar>
+          <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
+          <div class="flex">Polymer Chrome Apps Demo</div>
+        </paper-toolbar>
+        <div class="content">
+          <neon-animated-pages id="pages"
+            attr-for-selected="data-route"
+            selected-attribute="opened"
+            selected="[[route]]"
+            entry-animation="slide-from-right-animation"
+            exit-animation="slide-left-animation">
+            <bluetooth-controller data-route="bluetooth">Bluetooth</bluetooth-controller>
+          </neon-animated-pages>
+        </div>
+      </paper-scroll-header-panel>
+  </template>
+  <script src="scripts/main.js"></script>
 </body>
 </html>

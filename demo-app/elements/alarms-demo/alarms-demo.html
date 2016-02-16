@@ -1,70 +1,43 @@
-<link rel="import" href="/bower_components/polymer/polymer.html">
-
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../../../bower_components/paper-input/paper-input-decorator.html">
-
-
-<link rel="import" href="/bower_components/chrome-alarms/chrome-alarms.html">
-
+<link rel="import" href="../../../bower_components/chrome-alarms/chrome-alarms.html">
+<link rel="import" href="../../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../roboto/roboto.html">
 <link rel="import" href="../app-log/app-log.html">
 
-
-  <link rel="import" href="/bower_components/iron-flex-layout/iron-flex-layout.html">
 <dom-module id="alarms-demo">
   <style>
-    /* TODO(polyup): For speed, consider reworking these styles with .classes
-                     and #ids rather than [attributes].
-    */
-    [layout] {
-      @apply(--layout);
-    }
-    [layout][vertical] {
+    :host {
       @apply(--layout-vertical);
     }
-    [layout][horizontal] {
+
+    .panel-settings {
       @apply(--layout-horizontal);
-    }
-    [layout][center] {
       @apply(--layout-center);
     }
   </style>
-  <style></style>
   <template>
-
-    <div layout="" vertical="">
-      <h1>chrome-app-alarms</h1>
-
-      <section layout="" horizontal="" center="">
-        <!-- alarm name -->
-        <paper-input-decorator label="Alarm name">
-          <input is="core-input" type="text" value="{{name::input}}">
-        </paper-input-decorator>
-
-        <!-- alarm interval -->
-        <paper-input-decorator label="Interval / period (min)">
-          <input is="core-input" type="number" value="{{interval::input}}" min="1">
-        </paper-input-decorator>
-
-        <!-- action buttons -->
-        <paper-button on-click="setAlarm">set</paper-button>
-        <paper-button on-click="getAlarm">get</paper-button>
-        <paper-button on-click="clearAlarm">clear</paper-button>
-
-      </section>
-
-
-      <!-- log section. -->
-      <section>
-        <app-log id="log"></app-log>
-      </section>
-
-      <chrome-alarms id="alarms" on-alarm-info="onAlarmInfo" on-alarm="onAlarm" name="{{name}}"></chrome-alarms>
-
-    </div>
-
-
-
+    <h1>chrome-app-alarms</h1>
+    <section class="panel-settings">
+      <!-- alarm name -->
+      <paper-input-decorator label="Alarm name">
+        <input is="iron-input" type="text" value="{{name::input}}">
+      </paper-input-decorator>
+      <!-- alarm interval -->
+      <paper-input-decorator label="Interval / period (min)">
+        <input is="iron-input" type="number" value="{{interval::input}}" min="1">
+      </paper-input-decorator>
+      <!-- action buttons -->
+      <paper-button on-click="setAlarm">set</paper-button>
+      <paper-button on-click="getAlarm">get</paper-button>
+      <paper-button on-click="clearAlarm">clear</paper-button>
+    </section>
+    <!-- log section. -->
+    <section>
+      <app-log id="log"></app-log>
+    </section>
+    <chrome-alarms id="alarms" on-alarm-info="onAlarmInfo" on-alarm="onAlarm" name="{{name}}"></chrome-alarms>
   </template>
   <script src="alarms-demo.js"></script>
 </dom-module>

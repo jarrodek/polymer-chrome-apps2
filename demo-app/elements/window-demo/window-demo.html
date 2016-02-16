@@ -1,38 +1,36 @@
-<link rel="import" href="/bower_components/polymer/polymer.html">
-
-<link rel="import" href="../../../bower_components/core-label/core-label.html">
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../bower_components/iron-label/iron-label.html">
 <link rel="import" href="../../../bower_components/paper-menu/paper-menu.html">
 <link rel="import" href="../../../bower_components/paper-item/paper-item.html">
-
 <link rel="import" href="../../../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../../../bower_components/paper-checkbox/paper-checkbox.html">
 <link rel="import" href="../../../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
 <link rel="import" href="../../../bower_components/iron-dropdown/iron-dropdown.html">
 <link rel="import" href="../../../bower_components/paper-item/paper-item.html">
-
 <link rel="import" href="../roboto/roboto.html">
-<link rel="import" href="/bower_components/chrome-window/chrome-window.html">
+<link rel="import" href="../../../bower_components/chrome-window/chrome-window.html">
 <link rel="import" href="../app-log/app-log.html">
 
-
-  <link rel="import" href="/bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="/bower_components/iron-flex-layout/iron-flex-layout.html">
 <dom-module id="window-demo">
   <style>
     /* TODO(polyup): For speed, consider reworking these styles with .classes
                      and #ids rather than [attributes].
     */
+
     [layout] {
       @apply(--layout);
     }
+
     [layout][vertical] {
       @apply(--layout-vertical);
     }
   </style>
   <style>
-      paper-checkbox{
-        vertical-align: middle;
-      }
-    </style>
+    paper-checkbox {
+      vertical-align: middle;
+    }
+  </style>
   <template>
 
     <div layout="" vertical="">
@@ -41,34 +39,30 @@
       <section>
         <!-- file name -->
         <paper-input-decorator label="Window name (id)">
-          <input is="core-input" type="text" value="{{windowid::input}}">
+          <input is="iron-input" type="text" value="{{windowid::input}}">
         </paper-input-decorator>
         <paper-item>
           <paper-button on-click="openWindow" hidden$="{{isOpened}}">open</paper-button>
           <paper-button on-click="closeWindow" hidden$="{{!isOpened}}">close</paper-button>
         </paper-item>
-
         <paper-item>
-          <core-label>
+          <iron-label>
             <paper-checkbox for="" checked="{{windowhidden}}"></paper-checkbox>
             HIDDEN
-          </core-label>
+          </iron-label>
         </paper-item>
-
         <paper-item>
-          <core-label>
+          <iron-label>
             <paper-checkbox for="" checked="{{windowmaximized}}"></paper-checkbox>
             MAXIMIZE
-          </core-label>
+          </iron-label>
         </paper-item>
-
         <paper-item>
-          <core-label>
+          <iron-label>
             <paper-checkbox for="" checked="{{windowminimized}}"></paper-checkbox>
             MINIMIZE
-          </core-label>
+          </iron-label>
         </paper-item>
-
         <paper-item>
           Frame options:
           <paper-dropdown-menu label="Frame options">
@@ -80,18 +74,14 @@
             </iron-dropdown>
           </paper-dropdown-menu>
         </paper-item>
-
       </section>
-
       <!-- log section. -->
       <section>
         <app-log id="log"></app-log>
       </section>
-
     </div>
-
-    <chrome-window id="window" url="/demo-app/elements/window-demo/demo.html" name="{{windowid}}" frame="{{frameOption}}" state="{{windowState}}" windowhidden="{{windowhidden}}" maximized="{{windowmaximized}}" minimized="{{windowminimized}}" on-created="onCreated" on-error="onError"></chrome-window>
-
+    <chrome-window id="window" url="/demo-app/elements/window-demo/demo.html" name="{{windowid}}" frame="{{frameOption}}" state="{{windowState}}" windowhidden="{{windowhidden}}" maximized="{{windowmaximized}}" minimized="{{windowminimized}}" on-created="onCreated"
+      on-error="onError"></chrome-window>
   </template>
   <script src="window-demo.js"></script>
 </dom-module>

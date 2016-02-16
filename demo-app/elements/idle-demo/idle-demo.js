@@ -13,11 +13,11 @@ Polymer({
   queryState: function () {
     this.$.idle.state();
   },
-  showState: function (event, details, sender) {
+  showState: function (event, details) {
     this.state = details.state;
     this.$.log.append('Current state is ' + this.state);
   },
-  iddleError: function (event, details, sender) {
+  iddleError: function (event, details) {
     this.$.log.append(details.message, true);
   }
 });

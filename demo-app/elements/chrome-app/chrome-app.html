@@ -33,20 +33,13 @@
         font-family: RobotoDraft, sans-serif;
       }
 
-      #core_menu {
-        font-size: 16px;
-        left: -10px;
-        top: -10px;
-        position: absolute;
-      }
-
       .content-card {
         max-width: 1200px;
         margin: 0 auto;
         display: block;
       }
 
-      .dark core-toolbar {
+      .dark paper-toolbar {
         background-color: #3F51B5;
       }
 
@@ -91,7 +84,7 @@
         margin-bottom: 8px;
       }
 
-      core-animated-pages {
+      neon-animated-pages {
         position: absolute;
         top: 0px;
         right: 0;
@@ -122,13 +115,11 @@
 
       <paper-header-panel main class="dark">
         <paper-toolbar id="mainheader">
-
-          <paper-icon-button icon="menu" class="header-icon" core-drawer-toggle></paper-icon-button>
+          <paper-icon-button icon="menu" class="header-icon" iron-drawer-toggle></paper-icon-button>
           <div>Chrome APIs with Polymer example App</div>
         </paper-toolbar>
 
         <div id="content">
-
           <neon-animated-pages entry-animation="fade-in-animation" exit-animation="fade-out-animation" selected="{{selectedPage}}">
             <section>
               <div class="page" layout vertical>
@@ -162,9 +153,7 @@
               </div>
             </section>
           </neon-animated-pages>
-
         </div>
-
       </paper-header-panel>
     </paper-drawer-panel>
   </template>

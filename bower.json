@@ -11,6 +11,8 @@
     "iron-elements": "PolymerElements/iron-elements#latest",
     "paper-elements": "PolymerElements/paper-elements#latest",
     "neon-elements": "PolymerElements/neon-elements#latest",
+    "page": "visionmedia/page.js#~1.6.4",
+    "HTML5-History-API":"jarrodek/HTML5-History-API#latest",
     "paper-dialog-fullscreen": "bendavis78/paper-dialog-fullscreen",
     "chrome-alarms": "jarrodek/chrome-alarms",
     "chrome-bluetooth": "jarrodek/chrome-bluetooth",
